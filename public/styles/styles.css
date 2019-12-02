@@ -16,19 +16,18 @@ main {
     margin: 60px auto;
     padding-top: 30px;
 }
-nav {
+header nav {
     position: fixed;
     top: 0;
     overflow: hidden;
     z-index: 2;
     height: 70px;
-
     width: 100%;
     background-color: #8837b0;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-nav img {
+header nav img {
     margin-top: 20px;
     margin-left: 20px;
     height: 50%;
@@ -36,29 +35,30 @@ nav img {
     display: inline-block;
 }
 
-nav .desktop-menu ul {
+header nav .desktop-menu ul {
     margin-top: 20px;
     float: right;
     margin-right: 100px;
 }
 
-nav .desktop-menu ul li {
+header nav .desktop-menu ul li {
     display: inline-block;
     color: #f7d4fa;
     padding: 0 10px;
 }
 
-nav .desktop-menu ul li:hover {
+header nav .desktop-menu ul li:hover {
     color: white;
     cursor: pointer;
 }
 
-nav .desktop-menu{
+header nav .desktop-menu{
     float: right;
     visibility: hidden;
 }
 
-nav .mobile-menu{
+header nav .mobile-menu{
+    width: 30px;
     position: absolute;
     right: 20px;
     top: 20px;
@@ -67,9 +67,46 @@ nav .mobile-menu{
     font-size: 26px;
 }
 
-nav .mobile-menu:hover{
+header nav .mobile-menu:hover{
     color: white;
     cursor: pointer;
+}
+
+header #myDropdown{
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background-color: dimgray;
+}
+
+
+header #myDropdown ul{
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    list-style-type: none;
+
+}
+
+header #myDropdown ul li{
+    height: 40px;
+    width: 100%;
+    padding-top: 20px;
+    
+}
+
+header #myDropdown ul li a{
+    font-family: 'Open Sans', Arial, sans-serif;
+    text-decoration: none;
+    color: white;
+    margin-right: 20px;
+}
+
+header #myDropdown ul li:hover{
+   background-color: black;
 }
 
 @media only screen and (min-width: 600px){
