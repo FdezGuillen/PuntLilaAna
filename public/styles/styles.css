@@ -5,13 +5,14 @@
 html,
 body {
     height: 100%;
+    width: 100%;
     margin: 0;
     background-color: #fcfcfc;
 }
 
 main {
-    width: 70%;
     height: auto;
+    width: 100%;
     min-height: 100%;
     margin: 60px auto;
     padding-top: 30px;
@@ -35,6 +36,11 @@ header nav img {
     display: inline-block;
 }
 
+header nav .desktop-menu{
+    float: right;
+    visibility: hidden;
+}
+
 header nav .desktop-menu ul {
     margin-top: 20px;
     float: right;
@@ -50,11 +56,6 @@ header nav .desktop-menu ul li {
 header nav .desktop-menu ul li:hover {
     color: white;
     cursor: pointer;
-}
-
-header nav .desktop-menu{
-    float: right;
-    visibility: hidden;
 }
 
 header nav .mobile-menu{
@@ -109,20 +110,6 @@ header #myDropdown ul li:hover{
    background-color: black;
 }
 
-@media only screen and (min-width: 600px){
-    nav img{
-        margin-top: 20px;
-        margin-left: 100px;
-    }
-    nav .desktop-menu{
-        visibility: visible;
-    }
-    
-    nav .mobile-menu{
-        visibility: hidden;
-    }
-}
-
 h1,
 h2 {
     font-family: 'Open Sans', Arial, sans-serif;
@@ -169,16 +156,15 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+.container{
+    margin: 0 auto;
+}
+
 .container .content {
-    width: 60%;
     display: block;
     float: left;
     margin-bottom: 20px;
-}
-
-.container .secondary-content {
-    display: inline-block;
-    float: left;
+    padding: 0 2%;
 }
 
 .container .secondary-content > * {
@@ -188,9 +174,7 @@ tr:nth-child(even) {
 .container #map-container {
     display: inline-block;
     height: 400px;
-    width: 400px;
     border: 1px solid black;
-    float: right;
 }
 
 footer {
@@ -205,7 +189,75 @@ footer p {
     padding: 5px 100px;
 }
 
-/*    TOGGLE BUTTON STYLE    */
+/********************** RESPONSIVE SETTINGS ***************************************************************/
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+       header nav img{
+        margin-top: 20px;
+        margin-left: 100px;
+    }
+    header nav .desktop-menu{
+        visibility: visible;
+    }
+    header nav .mobile-menu{
+        visibility: hidden;
+    }
+    
+    .container #map-container{
+        float: right;
+    }
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+ 
+}
+
+@media only screen and (min-width: 960px) {
+  /* For desktop: */
+            nav img{
+        margin-top: 20px;
+        margin-left: 100px;
+    }
+    nav .desktop-menu{
+        visibility: visible;
+    }
+    
+    nav .mobile-menu{
+        visibility: hidden;
+    }
+        .container #map-container{
+        float: right;
+    }
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+
+}
+
+/********************** TOGGLE BUTTON STYLE ***************************************************************/
 .flipswitch {
     position: relative;
     top: 10px;
