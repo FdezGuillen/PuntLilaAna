@@ -344,3 +344,11 @@ footer p {
 .flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {
     right: 0;
 }
+
+
+/**************************MAPA*****************************/
+      #map {
+        height: 100%;
+        width: 100%;
+        margin: auto;
+      }
