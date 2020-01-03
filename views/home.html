@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Administració Punt Lila</title>
+    <link rel="stylesheet" type="text/css" href="../public/styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="../public/res/images/Logo_projecte_temporal_transparent.png" type="image/gif" sizes="16x16">
+    <script src="../public/scripts/mobile-menu.js"></script>
+    <meta name="google-signin-client_id" content="787505620014-1akgomvulb98qrcn96cm0er3s4jk6ks5.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <script>
+        async function onLoad() {
+            gapi.load('auth2', async function() {
+                await gapi.auth2.init();
+                signIn();
+            });
+        }
+
+        function logout() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+                console.log('Usuario desconectado.')
+            });
+            auth2.disconnect();
+            window.location.href = "http://localhost:8080/index.html";
+        }
+
+        function signIn(googleUser) {
+            //TODO Change this section to check if logged user is a valid Admin instead
+            var auth2 = gapi.auth2.getAuthInstance();
+            if (auth2.isSignedIn.get()) {
+                var profile = auth2.currentUser.get().getBasicProfile();
+                let userId = profile.getId();
+                let username = profile.getName();
+                let divWelcome = document.getElementById("userDiv").appendChild(document.createTextNode("Benvingut, " + username));
+            } else
+                window.location.href = "http://localhost:8080/index.html";
+        }
+
+    </script>
+    <script>
+      var marker;
+      //Get ISP coords if 10 seconds timeout exceed show an error 
+      function getCoords(){
+        let options = {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        };
+        navigator.geolocation.getCurrentPosition(setCoords,error,options);
+      }
+      //Create LatLng object for map and call initMap()
+      function setCoords(position){
+        let markerCoords = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+        initMap(markerCoords);
+      }
+      function error(err) {
+        alert("No ha sigut posible obtindre la localització, per favor refresca en uns pocs segons la web");
+      }; 
+      //Create a google map and set marker in the obtained coords
+      function initMap(markerCoords) {
+          let map = new google.maps.Map(document.getElementById('map'), {
+            center: markerCoords,
+            zoom: 20
+          });
+          //Image for google maps marker
+          let image = {
+            url: '../public/res/images/punt_lila_marker.png',
+            size: new google.maps.Size(100, 100),
+            origin: new google.maps.Point(0, 0),
+            /*Used for position the anchor for obtain coords, in the image, first parmeter moves the anchor in X axis 
+            and second parameter moves the anchor in Y axis*/
+            anchor: new google.maps.Point(25, 100),
+            scaledSize: new google.maps.Size(50, 100)
+          };
+          //Marker for google maps
+          marker = new google.maps.Marker({
+              position: markerCoords,
+              draggable: true,
+              map: map,
+              title: 'Caravana',
+              icon: image
+          }); 
+      }
+      //In a future this function will be used for send coords to firebase
+      function sendCoords(checkbox){
+          if (checkbox.checked)
+            alert(marker.position);
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQsTL00KMqYDUfLbm1nE7ACrp1vG-HxBc&callback=getCoords" async defer></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="home.html"><img src="../public/res/images/Logo_projecte_temporal_blanc.png" /></a>
+            <div class="desktop-menu">
+                <ul>
+                    <li><a href="home.html"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+                    <li><a href=""><i class="fa fa-cog" style="font-size:26px;"></i></a></li>
+                    <li><i class="fa fa-power-off" style="font-size:26px;" onclick="logout()"></i></li>
+                </ul>
+            </div>
+            <div class="mobile-menu">
+                <i class="fa fa-bars" onclick="showMenu()" id="menuButton"></i>
+            </div>
+        </nav>
+        <div id="myDropdown" class="dropdown-content">
+            <ul>
+                <li><a href="">Tauler d'administració</a></li>
+                <li><a href="">Preferències</a></li>
+                <li><a href="" onclick="logout()">Tancar sessió</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="col-8 col-s-11 container">
+            <h1>Tauler d'administració</h1>
+            <hr>
+            <div class="col-6 col-s-11 content">
+                <h2>Ubicació de la caravana</h2>
+                <div class="secondary-content">
+                    <span class="button-description">Transmetre ubicació de la caravana</span>
+                    <div class="flipswitch">
+                        <input type="checkbox" value="0" id="fs" class="flipswitch-cb" name="flipswitch" onclick="sendCoords(this)">
+                        <label for="fs" class="flipswitch-label">
+                            <div class="flipswitch-inner"></div>
+                            <div class="flipswitch-switch"></div>
+                        </label>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="map-container" class="col-5 col-s-11">
+                <div id="map"></div>
+            </div>
+            <div class="col-6 col-s-11 content">
+                <h2>Llista de telèfons</h2>
+                <div class="button-bar">
+                    <a href="./add-phone.html"><i class="fa fa-plus-circle" style="font-size:26px;"></i></a>
+                </div>
+                <table>
+                    <tr>
+                        <th>Número</th>
+                        <th>Descripció</th>
+                        <th>Accions</th>
+                    </tr>
+                    <tr>
+                        <td>111111111</td>
+                        <td>Exemple</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>111111111</td>
+                        <td>Exemple</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>111111111</td>
+                        <td>Exemple</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>111111111</td>
+                        <td>Exemple</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6 col-s-11 content">
+                <h2>Llista d'administradors</h2>
+                <div class="button-bar">
+                    <i class="fa fa-plus-circle" style="font-size:26px;"></i>
+                </div>
+                <table>
+                    <tr>
+                        <th>Nom d'usuari</th>
+                        <th>Permisos</th>
+                        <th>Accions</th>
+                    </tr>
+                    <tr>
+                        <td>anpere</td>
+                        <td>Admin</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>caeslop</td>
+                        <td>-</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>anpere</td>
+                        <td>Admin</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>caeslop</td>
+                        <td>-</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>anpere</td>
+                        <td>Admin</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>caeslop</td>
+                        <td>-</td>
+                        <td>
+                            <i class="fa fa-edit" style="font-size:26px;"></i>
+                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <p>APPunt Lila IES Serpis</p>
+    </footer>
+</body>
+
+</html>
