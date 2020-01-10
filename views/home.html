@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Administració Punt Lila</title>
     <link rel="stylesheet" type="text/css" href="../public/styles/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -91,6 +92,8 @@
           if (checkbox.checked)
             alert(marker.position);
       }
+        
+   
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQsTL00KMqYDUfLbm1nE7ACrp1vG-HxBc&callback=getCoords" async defer></script>
 </head>
@@ -101,7 +104,8 @@
             <a href="home.html"><img src="../public/res/images/Logo_projecte_temporal_blanc.png" /></a>
             <div class="desktop-menu">
                 <ul>
-                    <li><i class="fa fa-cog" style="font-size:26px;"></i></li>
+                    <li><a href="home.html"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+                    <li><a href=""><i class="fa fa-cog" style="font-size:26px;"></i></a></li>
                     <li><i class="fa fa-power-off" style="font-size:26px;" onclick="logout()"></i></li>
                 </ul>
             </div>
@@ -111,7 +115,7 @@
         </nav>
         <div id="myDropdown" class="dropdown-content">
             <ul>
-                <li><a href="">Home</a></li>
+                <li><a href="">Tauler d'administració</a></li>
                 <li><a href="">Preferències</a></li>
                 <li><a href="" onclick="logout()">Tancar sessió</a></li>
             </ul>
@@ -144,7 +148,7 @@
             <div class="col-6 col-s-11 content">
                 <h2>Llista de telèfons</h2>
                 <div class="button-bar">
-                    <i class="fa fa-plus-circle" style="font-size:26px;"></i>
+                    <a href="./add-phone.html"><i class="fa fa-plus-circle" style="font-size:26px;"></i></a>
                 </div>
                 <table>
                     <tr>
@@ -189,7 +193,7 @@
             <div class="col-6 col-s-11 content">
                 <h2>Llista d'administradors</h2>
                 <div class="button-bar">
-                    <i class="fa fa-plus-circle" style="font-size:26px;"></i>
+                    <a href="./add-admin.html"><i class="fa fa-plus-circle" style="font-size:26px;"></i></a>
                 </div>
                 <table>
                     <tr>

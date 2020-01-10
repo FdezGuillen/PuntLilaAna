@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Administració Punt Lila</title>
+    <link rel="stylesheet" type="text/css" href="../public/styles/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="../public/res/images/Logo_projecte_temporal_transparent.png" type="image/gif" sizes="16x16">
+    <script src="../public/scripts/mobile-menu.js"></script>
+    <meta name="google-signin-client_id" content="787505620014-1akgomvulb98qrcn96cm0er3s4jk6ks5.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <script>
+        async function onLoad() {
+            gapi.load('auth2', async function() {
+                await gapi.auth2.init();
+                signIn();
+            });
+        }
+
+        function logout() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+                console.log('Usuario desconectado.')
+            });
+            auth2.disconnect();
+            window.location.href = "http://localhost:8080/index.html";
+        }
+
+        function signIn(googleUser) {
+            //TODO Change this section to check if logged user is a valid Admin instead
+            var auth2 = gapi.auth2.getAuthInstance();
+            if (auth2.isSignedIn.get()) {
+                var profile = auth2.currentUser.get().getBasicProfile();
+                let userId = profile.getId();
+                let username = profile.getName();
+                let divWelcome = document.getElementById("userDiv").appendChild(document.createTextNode("Benvingut, " + username));
+            } else
+                window.location.href = "http://localhost:8080/index.html";
+        }
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="home.html"><img src="../public/res/images/Logo_projecte_temporal_blanc.png" /></a>
+            <div class="desktop-menu">
+                <ul>
+                    <li><a href="home.html"><i class="fa fa-home" style="font-size:26px;"></i></a></li>
+                    <li><a href=""><i class="fa fa-cog" style="font-size:26px;"></i></a></li>
+                    <li><i class="fa fa-power-off" style="font-size:26px;" onclick="logout()"></i></li>
+                </ul>
+            </div>
+            <div class="mobile-menu">
+                <i class="fa fa-bars" onclick="showMenu()" id="menuButton"></i>
+            </div>
+        </nav>
+        <div id="myDropdown" class="dropdown-content">
+            <ul>
+                <li><a href="./home.html">Tauler d'administració</a></li>
+                <li><a href="">Preferències</a></li>
+                <li><a href="" onclick="logout()">Tancar sessió</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="col-8 col-s-11 container">
+            <div class="form-header">
+            <h1>Agregar telèfon</h1>
+                </div>
+            <form class="col-6 col-s-11">
+                <div>
+                    <label for="name">Número:</label>
+                    <input type="tel" id="phone" name="phone" required minlength="3" size="30">
+                    <label for="name">Descripció:</label>
+                    <textarea type="text" id="description" name="description" rows="5"></textarea>
+                </div>
+                <div class="form-buttons-div">
+                    <a class="cancel" href="./home.html">Cancelar</a>
+                    <button>Agregar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>APPunt Lila IES Serpis</p>
+    </footer>
+</body>
+
+</html>
