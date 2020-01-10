@@ -232,6 +232,10 @@ form div input, textarea{
     margin-bottom: 20px;
 }
 
+input[type="email"]{
+    margin: 20px auto;
+}
+
 form div textarea{
     width: 100%;
 }
