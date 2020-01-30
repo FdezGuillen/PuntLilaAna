@@ -17,6 +17,7 @@ main {
     margin: 60px auto;
     padding-top: 30px;
 }
+
 header nav {
     position: fixed;
     top: 0;
@@ -36,7 +37,7 @@ header nav img {
     display: inline-block;
 }
 
-header nav .desktop-menu{
+header nav .desktop-menu {
     float: right;
     visibility: hidden;
 }
@@ -53,17 +54,19 @@ header nav .desktop-menu ul li {
     padding: 0 10px;
 }
 
-header nav .desktop-menu ul li, a{
+header nav .desktop-menu ul li,
+a {
     color: #e1bee7;
 }
 
-header nav .desktop-menu ul li:hover, a:hover {
+header nav .desktop-menu ul li:hover,
+a:hover {
     color: white;
     cursor: pointer;
 }
 
 
-header nav .mobile-menu{
+header nav .mobile-menu {
     width: 30px;
     position: absolute;
     right: 20px;
@@ -73,12 +76,12 @@ header nav .mobile-menu{
     font-size: 26px;
 }
 
-header nav .mobile-menu:hover{
+header nav .mobile-menu:hover {
     color: white;
     cursor: pointer;
 }
 
-header #myDropdown{
+header #myDropdown {
     position: fixed;
     top: 70px;
     right: 0;
@@ -87,7 +90,7 @@ header #myDropdown{
 }
 
 
-header #myDropdown ul{
+header #myDropdown ul {
     height: auto;
     width: 100%;
     margin: 0;
@@ -97,22 +100,22 @@ header #myDropdown ul{
 
 }
 
-header #myDropdown ul li{
+header #myDropdown ul li {
     height: 40px;
     width: 100%;
     padding-top: 20px;
-    
+
 }
 
-header #myDropdown ul li a{
+header #myDropdown ul li a {
     font-family: 'Open Sans', Arial, sans-serif;
     text-decoration: none;
     color: white;
     margin-right: 20px;
 }
 
-header #myDropdown ul li:hover{
-   background-color: black;
+header #myDropdown ul li:hover {
+    background-color: black;
 }
 
 h1,
@@ -131,14 +134,18 @@ h2 {
 
 }
 
-a, i, li{
+a,
+i,
+li {
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
 }
 
-a:hover, i:hover, li:hover{
+a:hover,
+i:hover,
+li:hover {
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
@@ -154,11 +161,14 @@ a:hover, i:hover, li:hover{
 }
 
 
-.button-bar a i{
+.button-bar a i,
+table tr td i {
     color: #212121;
 }
 
-.button-bar a i:hover{
+.button-bar a i:hover,
+table tr td i:hover {
+    cursor: pointer;
     color: #DA70D6;
 }
 
@@ -184,7 +194,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-.container{
+.container {
     margin: 0 auto;
 }
 
@@ -205,46 +215,47 @@ tr:nth-child(even) {
     border: 1px solid black;
 }
 
-.form-header{
-    
+.form-header {
+
     position: relative;
     text-align: center;
 }
 
-.form-header h1{
+.form-header h1 {
     margin: 1rem auto;
     border-bottom: 2px solid #DA70D6;
     padding-bottom: 5px;
     width: auto;
-    display:inline-block;
+    display: inline-block;
 }
 
-form{
+form {
     margin: 0 auto;
     padding: 30px 20px;
     border-radius: 1em;
     box-shadow: 0 1px 4px 0 #E1BEE7;
 }
 
-form div input, textarea{
+form div input,
+textarea {
     display: block;
     margin-top: 5px;
     margin-bottom: 20px;
 }
 
-input[type="email"]{
+input[type="email"] {
     margin: 20px auto;
 }
 
-form div textarea{
+form div textarea {
     width: 100%;
 }
 
-form .form-buttons-div{
+form .form-buttons-div {
     text-align: center;
 }
 
-button{
+button {
     background-color: #9C27B0;
     color: #FFFFFF;
     font-size: 0.9em;
@@ -252,15 +263,15 @@ button{
     padding: 5px 10px;
     border: 0.2em outset #E1BEE7;
     border-radius: 1em;
-    
+
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
 }
 
-button:hover{
-    cursor:pointer;
+button:hover {
+    cursor: pointer;
     box-shadow: 0 1px 5px 0 #DA70D6;
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
@@ -268,7 +279,7 @@ button:hover{
     transition: all 0.2s ease-in;
 }
 
-a.cancel{
+a.cancel {
     background-color: #E1BEE7;
     color: #212121;
     font-size: 0.9em;
@@ -277,15 +288,15 @@ a.cancel{
     padding: 5px 10px;
     border: 0.2em outset #E1BEE7;
     border-radius: 1em;
-    
+
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
     -webkit-transition: all 0.2s ease-in;
     transition: all 0.2s ease-in;
 }
 
-a.cancel:hover{
-        cursor:pointer;
+a.cancel:hover {
+    cursor: pointer;
     box-shadow: 0 1px 5px 0 #DA70D6;
     -moz-transition: all 0.2s ease-in;
     -o-transition: all 0.2s ease-in;
@@ -308,68 +319,146 @@ footer p {
 /********************** RESPONSIVE SETTINGS ***************************************************************/
 /* For mobile phones: */
 [class*="col-"] {
-  width: 100%;
+    width: 100%;
 }
 
 @media only screen and (min-width: 600px) {
-  /* For tablets: */
-       header nav img{
+
+    /* For tablets: */
+    header nav img {
         margin-top: 20px;
         margin-left: 100px;
     }
-    header nav .desktop-menu{
+
+    header nav .desktop-menu {
         visibility: visible;
     }
-    header nav .mobile-menu{
+
+    header nav .mobile-menu {
         visibility: hidden;
     }
-    
-    .container #map-container{
+
+    .container #map-container {
         float: right;
     }
-  .col-s-1 {width: 8.33%;}
-  .col-s-2 {width: 16.66%;}
-  .col-s-3 {width: 25%;}
-  .col-s-4 {width: 33.33%;}
-  .col-s-5 {width: 41.66%;}
-  .col-s-6 {width: 50%;}
-  .col-s-7 {width: 58.33%;}
-  .col-s-8 {width: 66.66%;}
-  .col-s-9 {width: 75%;}
-  .col-s-10 {width: 83.33%;}
-  .col-s-11 {width: 91.66%;}
-  .col-s-12 {width: 100%;}
- 
+
+    .col-s-1 {
+        width: 8.33%;
+    }
+
+    .col-s-2 {
+        width: 16.66%;
+    }
+
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-4 {
+        width: 33.33%;
+    }
+
+    .col-s-5 {
+        width: 41.66%;
+    }
+
+    .col-s-6 {
+        width: 50%;
+    }
+
+    .col-s-7 {
+        width: 58.33%;
+    }
+
+    .col-s-8 {
+        width: 66.66%;
+    }
+
+    .col-s-9 {
+        width: 75%;
+    }
+
+    .col-s-10 {
+        width: 83.33%;
+    }
+
+    .col-s-11 {
+        width: 91.66%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+
 }
 
 @media only screen and (min-width: 960px) {
-  /* For desktop: */
-            nav img{
+
+    /* For desktop: */
+    nav img {
         margin-top: 20px;
         margin-left: 100px;
     }
-    nav .desktop-menu{
+
+    nav .desktop-menu {
         visibility: visible;
     }
-    
-    nav .mobile-menu{
+
+    nav .mobile-menu {
         visibility: hidden;
     }
-        .container #map-container{
+
+    .container #map-container {
         float: right;
     }
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
+
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
 
 }
 
@@ -463,8 +552,8 @@ footer p {
 
 
 /**************************MAPA*****************************/
-      #map {
-        height: 100%;
-        width: 100%;
-        margin: auto;
+#map {
+    height: 100%;
+    width: 100%;
+    margin: auto;
 }

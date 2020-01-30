@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="../public/res/images/Logo_projecte_temporal_transparent.png" type="image/gif" sizes="16x16">
     <script src="../public/scripts/mobile-menu.js"></script>
-    <meta name="google-signin-client_id" content="787505620014-1akgomvulb98qrcn96cm0er3s4jk6ks5.apps.googleusercontent.com">
+    <script src="../public/scripts/adminsv.js"></script>
+    <meta name="google-signin-client_id" content="274165429499-rqr41o6vdtqu3o58mso87s5ismk5bajo.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <script>
         async function onLoad() {
@@ -37,7 +38,7 @@
                 var profile = auth2.currentUser.get().getBasicProfile();
                 let userId = profile.getId();
                 let username = profile.getName();
-                let divWelcome = document.getElementById("userDiv").appendChild(document.createTextNode("Benvingut, " + username));
+                //let divWelcome = document.getElementById("userDiv").appendChild(document.createTextNode("Benvingut, " + username));
             } else
                 window.location.href = "http://localhost:8080/index.html";
         }
@@ -72,8 +73,8 @@
     <main>
         <div class="col-8 col-s-11 container">
             <div class="form-header">
-            <h1>Agregar administrador</h1>
-                </div>
+                <h1>Agregar administrador</h1>
+            </div>
             <form class="col-6 col-s-11">
                 <div>
                     <p>Introdueix el correu electrònic de la persona a la qual atorgarà permisos d'administració</p>
@@ -81,7 +82,7 @@
                 </div>
                 <div class="form-buttons-div">
                     <a class="cancel" href="./home.html">Cancelar</a>
-                    <button>Agregar</button>
+                    <button type="button" onclick="postAdmin()">Agregar</button>
                 </div>
             </form>
         </div>
