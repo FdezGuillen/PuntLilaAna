@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="../public/res/images/Logo_projecte_temporal_transparent.png" type="image/gif" sizes="16x16">
     <script src="../public/scripts/mobile-menu.js"></script>
-    <script src="../public/scripts/adminsv.js"></script>
+    <script src="../public/scripts/admin-service.js"></script>
+    <script src="../public/scripts/phone-service.js"></script>
     <meta name="google-signin-client_id" content="274165429499-rqr41o6vdtqu3o58mso87s5ismk5bajo.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <script>
@@ -40,6 +41,7 @@
                 let userId = profile.getId();
                 let username = profile.getName();
                 let divWelcome = document.getElementById("userHeader").innerHTML = "Benvingut, " + username;
+                getPhones();
                 getAdmins();
             } else
                 window.location.href = "http://localhost:8080/index.html";
@@ -155,43 +157,12 @@
                 <div class="button-bar">
                     <a href="./add-phone.html"><i class="fa fa-plus-circle" style="font-size:26px;"></i></a>
                 </div>
-                <table>
+                <table id="phoneTable">
                     <tr>
+                        <th>Títol</th>
                         <th>Número</th>
                         <th>Descripció</th>
                         <th>Accions</th>
-                    </tr>
-                    <tr>
-                        <td>111111111</td>
-                        <td>Exemple</td>
-                        <td>
-                            <i class="fa fa-edit" style="font-size:26px;"></i>
-                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>111111111</td>
-                        <td>Exemple</td>
-                        <td>
-                            <i class="fa fa-edit" style="font-size:26px;"></i>
-                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>111111111</td>
-                        <td>Exemple</td>
-                        <td>
-                            <i class="fa fa-edit" style="font-size:26px;"></i>
-                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>111111111</td>
-                        <td>Exemple</td>
-                        <td>
-                            <i class="fa fa-edit" style="font-size:26px;"></i>
-                            <i class="fa fa-minus-circle" style="font-size:26px;"></i>
-                        </td>
                     </tr>
                 </table>
             </div>
