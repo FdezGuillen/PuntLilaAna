@@ -14,8 +14,10 @@ function emptyPhonesList() {
         </tr>`;
 }
 
-function addPhoneToForm(phone) {
-    var phone = JSON.parse(phone);
+function addPhoneToForm(title, number, description) {
+    //var phone = JSON.parse(phone);
+
+    document.getElementById("phoneTitle").value = title;
 }
 
 function getPhoneByTitle(phoneTitle) {
@@ -27,7 +29,6 @@ function getPhoneByTitle(phoneTitle) {
         }
     };
     var token = getToken();
-    console.log(token);
     xhttp.open("GET", "http://localhost:5000/phones/" + phoneTitle, true);
     xhttp.setRequestHeader("Authorization", token);
     xhttp.send();
@@ -40,6 +41,8 @@ function getPhones() {
             // Typical action to be performed when the document is ready:
             addPhonesToList(xhttp.responseText);
         }
+        console.log(xhttp.responseText);
+
     };
     var token = getToken();
     console.log(token);
@@ -52,7 +55,9 @@ function addPhonesToList(phones) {
     var phoneList = JSON.parse(phones);
     console.log("aaaaa" + phones);
     var phoneTable = document.getElementById("phoneTable");
+    var cont = 0;
     Object.keys(phoneList).forEach(e => {
+        cont++;
         var row = document.createElement("tr");
 
         var titleCell = document.createElement("td");
@@ -69,7 +74,10 @@ function addPhonesToList(phones) {
         editAction.className = "fa fa-edit";
         editAction.style.fontSize = "26px";
         editAction.onclick = function () {
-            window.location.href = "http://localhost:8080/views/add-phone.html" + '?key=' + e;
+            window.location.href = "http://localhost:8080/views/edit-phone.html" +
+                '?key=' + e +
+                '?number=' + phoneList[e].number +
+                '?desc=' + phoneList[e].description;
         };
 
         var delAction = document.createElement("i");
@@ -88,6 +96,12 @@ function addPhonesToList(phones) {
         row.appendChild(actionsCell);
         phoneTable.appendChild(row);
     });
+
+    if (cont == 0) {
+        document.getElementById("add-phone-icon").visibility = "visible";
+    } else {
+        document.getElementById("add-phone-icon").visibility = "hidden";
+    }
 }
 
 

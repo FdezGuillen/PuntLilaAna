@@ -13,6 +13,7 @@
     <script src="../public/scripts/mobile-menu.js"></script>
     <script src="../public/scripts/admin-service.js"></script>
     <script src="../public/scripts/phone-service.js"></script>
+    <script src="../public/scripts/send-message.js"></script>
     <meta name="google-signin-client_id" content="274165429499-rqr41o6vdtqu3o58mso87s5ismk5bajo.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <script>
@@ -41,6 +42,7 @@
                 let userId = profile.getId();
                 let username = profile.getName();
                 let divWelcome = document.getElementById("userHeader").innerHTML = "Benvingut, " + username;
+
                 getPhones();
                 getAdmins();
             } else
@@ -99,6 +101,10 @@
                 alert(marker.position);
         }
 
+        window.onload = function() {
+            initMenu();
+        };
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQsTL00KMqYDUfLbm1nE7ACrp1vG-HxBc&callback=getCoords" async defer></script>
 </head>
@@ -146,16 +152,31 @@
                         </label>
                     </div>
                 </div>
-                <input type="button" value="click" onclick="getAdmins()">
 
             </div>
             <div id="map-container" class="col-5 col-s-11">
                 <div id="map"></div>
             </div>
+
+            <div class="col-6 col-s-11 content">
+                <h2>Enviar missatge</h2>
+                <form class="col-11 col-s-11">
+                    <div>
+                        <label for="name">Títol:</label>
+                        <input type="text" id="messageTitle" name="phoneTitle" required minlength="3" size="30">
+                        <label for="name">Missatge:</label>
+                        <textarea type="text" id="messageBody" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-buttons-div">
+                        <button type="button" onclick="postMessage()">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
             <div class="col-6 col-s-11 content">
                 <h2>Llista de telèfons</h2>
                 <div class="button-bar">
-                    <a href="./add-phone.html"><i class="fa fa-plus-circle" style="font-size:26px;"></i></a>
+                    <a href="./add-phone.html" id="add-phone-icon" style="visibility: hidden;"><i class="fa fa-plus-circle" style="font-size:26px;"></i></a>
                 </div>
                 <table id="phoneTable">
                     <tr>

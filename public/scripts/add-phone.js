@@ -1,10 +1,9 @@
 window.onload = function () {
-    var phoneTitle = getUrlParameter();
-    addPhoneToForm();
+    initMenu();
 };
-
-function getUrlParameter() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    return urlParams.get('key');
-}
+//
+//function getUrlParameter() {
+//    const queryString = window.location.search;
+//    const urlParams = new URLSearchParams(queryString);
+//    return urlParams.get('key');
+//}

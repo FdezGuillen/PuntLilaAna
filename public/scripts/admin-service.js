@@ -19,6 +19,8 @@ function getAdmins() {
             // Typical action to be performed when the document is ready:
             addAdminsToList(xhttp.responseText);
         }
+
+        console.log(xhttp.responseText);
     };
     var token = getToken();
     xhttp.open("GET", "http://localhost:5000/admins", true);
@@ -68,7 +70,7 @@ function postAdmin() {
 
     xhttp.open("POST", "http://localhost:5000/admins", true);
     xhttp.setRequestHeader("Authorization", token);
-    xhttp.setRequestHeader("Content-type", "application/json");
+    //xhttp.setRequestHeader("Content-type", "application/json");
 
     xhttp.send(objectToSend);
 }

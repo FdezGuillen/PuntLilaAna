@@ -44,6 +44,10 @@
                 window.location.href = "http://localhost:8080/index.html";
         }
 
+        window.onload = function() {
+            initMenu();
+        };
+
     </script>
 </head>
 
@@ -74,10 +78,20 @@
     <main>
         <div class="col-8 col-s-11 container">
             <div class="form-header">
-                <h1>Agregar telèfon</h1>
+                <h1>Agregar telèfons</h1>
             </div>
             <form class="col-6 col-s-11">
                 <div>
+                    <h4>Telèfon 1</h4>
+                    <label for="name">Títol:</label>
+                    <input type="text" id="phoneTitle" name="phoneTitle" required minlength="3" size="30">
+                    <label for="name">Número:</label>
+                    <input type="tel" id="phoneNumber" name="phone" required minlength="3" size="30">
+                    <label for="name">Descripció:</label>
+                    <textarea type="text" id="phoneDesc" name="description" rows="5"></textarea>
+                </div>
+                <div>
+                    <h4>Telèfon 2</h4>
                     <label for="name">Títol:</label>
                     <input type="text" id="phoneTitle" name="phoneTitle" required minlength="3" size="30">
                     <label for="name">Número:</label>
